@@ -22,34 +22,35 @@ namespace HotelReservationSystem
             }
             hotels.Add(hotel.name, hotel);
         }
-
-        public Hotel FindCheapestHotel(DateTime startDate, DateTime endDate)
-        {
-            if (startDate > endDate)
-            {
-                Console.WriteLine("Start date cannot be greater than end date");
-            }
-
-            var cost = Int32.MaxValue;
-            Hotel cheapestHotel = new Hotel();
-            foreach (var hotel in hotels)
-            {
-                var temp = cost;
-                cost = Math.Min(cost, CalculateTotalCost(hotel.Value, startDate, endDate));
-                if (temp != cost)
-                    cheapestHotel = hotel.Value;
-            }
-            return cheapestHotel;
-        }
+        /*
+                public Hotel FindCheapestHotel(DateTime startDate, DateTime endDate)
+                {
+                    if (startDate > endDate)
+                    {
+                        Console.WriteLine("Start date cannot be greater than end date");
+                    }
+                    var cost = Int32.MaxValue;
+                    Hotel cheapestHotel = new Hotel();
+                    foreach (var hotel in hotels)
+                    {
+                        var temp = cost;
+                        cost = Math.Min(cost, CalculateTotalCost(hotel.Value, startDate, endDate));
+                        if (temp != cost)
+                            cheapestHotel = hotel.Value;
+                    }
+                    return cheapestHotel;
+                }*/
         public List<Hotel> FindCheapestHotels(DateTime startDate, DateTime endDate)
         {
+            var cost = Int32.MaxValue;
+            var cheapestHotels = new List<Hotel>();
             if (startDate > endDate)
             {
                 Console.WriteLine("Start date cannot be greater than end date");
+                //Program.FindCheapest(hotelReservation);
                 return null;
             }
-            var cost = Int32.MaxValue;
-            var cheapestHotels = new List<Hotel>();
+
             foreach (var hotel in hotels)
             {
                 var temp = cost;
